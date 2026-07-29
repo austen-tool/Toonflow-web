@@ -2,6 +2,11 @@
   "name": "toonflow_web",
   "version": "0.0.0",
   "type": "module",
+  "packageManager": "yarn@1.22.22",
+  "engines": {
+    "node": "24.18.0",
+    "yarn": "1.22.22"
+  },
   "scripts": {
     "dev": "vite --host",
     "preview": "vite preview",
