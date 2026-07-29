@@ -1,5 +1,10 @@
 import settingStore from "@/stores/setting";
 
+export type ThemeMode = "auto" | "light" | "dark";
+
+export const resolveThemeMode = (mode: ThemeMode): "light" | "dark" =>
+  mode === "auto" ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : mode;
+
 // HEX 转 HSL
 const hexToHsl = (hex: string) => {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);

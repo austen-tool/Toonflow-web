@@ -8,7 +8,7 @@
     </div>
     <div class="storyboardList">
       <t-empty v-if="!storyboardTable" style="margin-top: 16px"></t-empty>
-      <MdPreview v-else v-model="storyboardTable" :theme="themeSetting.mode" />
+      <MdPreview v-else v-model="storyboardTable" :theme="resolveThemeMode(themeSetting.mode)" />
     </div>
   </t-card>
 
@@ -26,7 +26,7 @@
     attach="body">
     <MdEditor
       v-model="editContent"
-      :theme="themeSetting.mode"
+      :theme="resolveThemeMode(themeSetting.mode)"
       :toolbars="toolbars"
       :footers="[]"
       style="height: 72vh"
@@ -43,6 +43,7 @@ import { MdEditor, MdPreview } from "md-editor-v3";
 import type { ToolbarNames } from "md-editor-v3";
 import settingStore from "@/stores/setting";
 import productionAgentStore from "@/stores/productionAgent";
+import { resolveThemeMode } from "@/utils/theme";
 const { themeSetting } = storeToRefs(settingStore());
 
 const props = defineProps<{

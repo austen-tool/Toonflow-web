@@ -94,8 +94,8 @@ const modelParmas = defineModel<ModelSetting>({
   },
 });
 const emit = defineEmits(["modeChange"]);
-function handleBeforeChange(newVal: string) {
-  emit("modeChange", newVal);
+function handleBeforeChange(newVal: unknown) {
+  if (typeof newVal === "string") emit("modeChange", newVal);
 }
 function updateDuration(newDuration: number) {
   modelParmas.value.duration = newDuration;

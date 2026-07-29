@@ -31,16 +31,10 @@ production output under `dist/`.
 
 At baseline revision `9c4cb0ec7d4f6b4067c7768e2df8cdc7f8587214`,
 `type-check` and the standard `build` are blocked by an upstream syntax error at
-`src/views/production/components/workbench/generate copy.vue:1063`. This is
-tracked as TASK-002A in the Platform repository. Until that focused fix is
-reviewed, the reproducible Vite artifact command is:
-
-```powershell
-corepack yarn build-only
-```
-
-This command does not replace the failed type check; both results must be
-reported together.
+`src/views/production/components/workbench/generate copy.vue:1063` and
+additional latent type errors. TASK-002A resolves those blockers. The standard
+`type-check` and `build` commands above are the required acceptance path;
+`build-only` must not be used as a substitute for type safety.
 
 ## Local Smoke Test
 
